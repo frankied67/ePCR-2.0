@@ -4,7 +4,10 @@ export const patient = writable({
 	firstName: '',
 	surname: '',
 	dob: '',
-	age: ''
+	age: '',
+	airway: '',
+	breathing: '',
+	circulation: ''
 });
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
@@ -14,6 +17,15 @@ export function updatePatientNameAndDob(firstName, surname, dob) {
 		surname,
 		dob,
 		age: calculateAge(dob)
+	}));
+}
+
+export function updatePatientABC(airway, breathing, circulation) {
+	patient.update((p) => ({
+		...p,
+		airway,
+		breathing,
+		circulation
 	}));
 }
 
