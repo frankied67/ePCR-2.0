@@ -7,7 +7,19 @@ export const patient = writable({
 	age: '',
 	airway: '',
 	breathing: '',
-	circulation: ''
+	circulation: '',
+	address: {
+		line1: '',
+		line2: '',
+		line3: '',
+		county: '',
+		postcode: ''
+	},
+	nok: {
+		firstname: '',
+		surname: '',
+		phone: ''
+	}
 });
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
@@ -26,6 +38,16 @@ export function updatePatientABC(airway, breathing, circulation) {
 		airway,
 		breathing,
 		circulation
+	}));
+}
+
+export function updatePatientAddress(field, value) {
+	patient.update((p) => ({
+		...p,
+		address: {
+			...p.address,
+			[field]: value
+		}
 	}));
 }
 

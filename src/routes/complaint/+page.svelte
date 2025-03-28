@@ -3,7 +3,7 @@
     import ABC from "$lib/ui/ABC.svelte";
   </script>
   
-  <div class="container">
+  <div class="container mt-4">
     <Patient />
 
     <div class="mt-4">
