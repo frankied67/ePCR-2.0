@@ -20,8 +20,8 @@
 <nav class="nav bg-primary p-2">
 <div class="container d-flex justify-content-between">
   <a href="/complaint" class="nav-link text-white">Complaint</a>
-  <a href="/demographic" class="nav-link text-white">Demographic</a>
   <a href="/vitals" class="nav-link text-white">Vitals</a>
+  <a href="/demographic" class="nav-link text-white">Demographic</a>
 </div>
 </nav>
 

@@ -19,7 +19,8 @@ export const patient = writable({
 		firstname: '',
 		surname: '',
 		phone: ''
-	}
+	},
+	vitals: []
 });
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
@@ -48,6 +49,13 @@ export function updatePatientAddress(field, value) {
 			...p.address,
 			[field]: value
 		}
+	}));
+}
+
+export function updatePatientVitals(newVitals) {
+	patient.update((p) => ({
+		...p,
+		vitals: [...p.vitals, newVitals]
 	}));
 }
 
