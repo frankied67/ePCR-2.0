@@ -1,6 +1,7 @@
 <script>
   import Patient from "$lib/ui/Patient.svelte";
   import Vitals from "$lib/ui/Vitals.svelte";
+  import Sepsis from "$lib/ui/Sepsis.svelte";
   import { patient, updatePatientVitals } from "$lib/patientStore"; 
 
   function addVitals(newVitals) {
@@ -10,6 +11,8 @@
 
 <div class="container mt-4">
   <Patient />
+
+  <Sepsis />
 
   <div class="mt-4">
     <Vitals on:vitalsUpdated="{addVitals}" /> 

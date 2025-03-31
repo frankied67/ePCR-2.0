@@ -15,7 +15,7 @@
     let verbal = "";
     let motor = "";
     let gcs = "";
-    let mewsScore = "";
+    let acuteConfusion = false;
 
     function calculateGCS() {
         gcs = (Number(eyes) || 0) + (Number(verbal) || 0) + (Number(motor) || 0);
@@ -24,14 +24,14 @@
     function submitVitals() {
         const newVitals = { 
             time, heartRate, ecgRythm, breathingRate, systolicBP, diastolicBP, 
-            bloodSugar, temperature, oxygenSaturation, gcs, mewsScore 
+            bloodSugar, temperature, oxygenSaturation, gcs, acuteConfusion 
         };
-        
 
         updatePatientVitals(newVitals);
-        
+
         time = heartRate = ecgRythm = breathingRate = systolicBP = diastolicBP = bloodSugar = temperature = oxygenSaturation = "";
-        eyes = verbal = motor = gcs = mewsScore = "";
+        eyes = verbal = motor = gcs = "";
+        acuteConfusion = false;
     }
 
     let vitalsList = derived(patient, $patient => $patient.vitals || []);
@@ -73,12 +73,16 @@
         </div>
         <div class="row mb-3">
             <div class="col-md-4">
-                <label>Temperature</label>
+                <label>Temperature (°C)</label>
                 <input type="number" class="form-control" step="0.1" bind:value={temperature} />
             </div>
             <div class="col-md-4">
-                <label>Oxygen Saturation</label>
+                <label>Oxygen Saturation (%)</label>
                 <input type="number" class="form-control" bind:value={oxygenSaturation} />
+            </div>
+            <div class="col-md-4">
+                <label>Acute Confusion</label>
+                <input type="checkbox" bind:checked={acuteConfusion} />
             </div>
         </div>
         <div class="row mb-3">
@@ -91,19 +95,15 @@
                 </div>
                 <input type="text" class="form-control mt-2" readonly bind:value={gcs} />
             </div>
-            <div class="col-md-4">
-                <label>MEWS Score</label>
-                <input type="text" class="form-control" readonly bind:value={mewsScore} />
-            </div>
         </div>
         <button class="btn btn-primary" on:click={submitVitals}>Submit</button>
     </div>
 </div>
 
-<h3 class="mt-4 mb-4 p-3">Recorded Vital Signs</h3>
+<h3 class="mt-5 mb-4 p-3 bg-light text-dark">Recorded Vital Signs</h3>
 <ul class="list-group">
     {#each $vitalsList as vital}
-        <li class="list-group-item">
+        <li class="list-group-item mb-2 p-3 border rounded">
             <div class="row">
                 <div class="col-2"><strong class="text-primary">Time:</strong> {vital.time}</div>
                 <div class="col-2"><strong class="text-primary">HR:</strong> {vital.heartRate}</div>
@@ -114,11 +114,8 @@
             </div>
             <div class="row mt-2">
                 <div class="col-2"><strong class="text-primary">Blood Sugar:</strong> {vital.bloodSugar} mmol/L</div>
-                <div class="col-2"><strong class="text-primary">MEWS:</strong> {vital.mewsScore}</div>
+                <div class="col-2"><strong class="text-primary">Acute Confusion:</strong> {vital.acuteConfusion ? 'Yes' : 'No'}</div>
             </div>
         </li>
     {/each}
 </ul>
-
-
-
