@@ -15,7 +15,7 @@
   
   <style>
     .login-page {
-      background: url('/ambulance1.jpg') no-repeat center center;
+      background: url('/ambulance2.png') no-repeat center center;
       background-size: cover;
       height: 100vh;
     }

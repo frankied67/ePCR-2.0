@@ -20,7 +20,13 @@ export const patient = writable({
 		surname: '',
 		phone: ''
 	},
-	vitals: []
+	vitals: [],
+	sample: {
+		symptoms: '',
+		allergies: [],
+		medications: [],
+		lastOralIntake: ''
+	}
 });
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
@@ -56,6 +62,16 @@ export function updatePatientVitals(newVitals) {
 	patient.update((p) => ({
 		...p,
 		vitals: [...p.vitals, newVitals]
+	}));
+}
+
+export function updatePatientSample(sampleData) {
+	patient.update((p) => ({
+		...p,
+		sample: {
+			...p.sample,
+			...sampleData
+		}
 	}));
 }
 
