@@ -26,7 +26,8 @@ export const patient = writable({
 		allergies: [],
 		medications: [],
 		lastOralIntake: ''
-	}
+	},
+	administeredMedications: []
 });
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
@@ -74,6 +75,20 @@ export function updatePatientSample(sampleData) {
 		}
 	}));
 }
+
+export const addAdministeredMedication = (medication) => {
+	patient.update(($patient) => {
+		$patient.administeredMedications.push(medication);
+		return $patient;
+	});
+};
+
+export const deleteAdministeredMedication = (index) => {
+	patient.update(($patient) => {
+		$patient.administeredMedications.splice(index, 1);
+		return $patient;
+	});
+};
 
 function calculateAge(dob) {
 	const birthDate = new Date(dob);
