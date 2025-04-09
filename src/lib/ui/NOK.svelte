@@ -1,5 +1,5 @@
 <script>
-    import { patient } from '$lib/patientStore.js';
+    import { patient } from '../stores/patientStore.js';
   
     function updateNOK(field, value) {
       patient.update(p => {

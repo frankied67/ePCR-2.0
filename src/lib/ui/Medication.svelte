@@ -1,5 +1,5 @@
 <script>
-    import { patient, addAdministeredMedication, deleteAdministeredMedication } from '$lib/patientStore';
+    import { patient, addAdministeredMedication, deleteAdministeredMedication } from '../stores/patientStore';
   
     let time = '';
     let medication = '';

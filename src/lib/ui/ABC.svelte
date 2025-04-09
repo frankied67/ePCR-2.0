@@ -1,5 +1,5 @@
 <script>
-    import { updatePatientABC } from '$lib/patientStore';
+    import { updatePatientABC } from '../stores/patientStore';
     let airway = '';
     let breathing = '';
     let circulation = '';

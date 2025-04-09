@@ -1,5 +1,5 @@
 <script>
-    import { patient } from "$lib/patientStore";
+    import { patient } from "../stores/patientStore";
     import { derived } from "svelte/store";
   
     const sepsisMarkers = derived(patient, ($patient) => {

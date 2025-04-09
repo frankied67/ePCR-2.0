@@ -1,5 +1,5 @@
 <script>
-    import { patient, updatePatientVitals } from '$lib/patientStore';
+    import { patient, updatePatientVitals } from '../stores/patientStore';
     import { derived } from 'svelte/store';
 
     let time = "";

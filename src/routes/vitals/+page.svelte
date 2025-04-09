@@ -2,7 +2,8 @@
   import Patient from "$lib/ui/Patient.svelte";
   import Vitals from "$lib/ui/Vitals.svelte";
   import Sepsis from "$lib/ui/Sepsis.svelte";
-  import { patient, updatePatientVitals } from "$lib/patientStore"; 
+  import { patient, updatePatientVitals } from "../../lib/stores/patientStore"; 
+
 
   function addVitals(newVitals) {
     updatePatientVitals(newVitals); 

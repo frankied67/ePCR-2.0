@@ -1,5 +1,5 @@
 <script>
-	import { patient, updatePatientSample } from '$lib/patientStore.js';
+	import { patient, updatePatientSample } from '../stores/patientStore.js';
 	let symptoms = '';
 	let lastOralIntake = '';
 	let allergies = [];
