@@ -27,7 +27,16 @@ export const patient = writable({
 		medications: [],
 		lastOralIntake: ''
 	},
-	administeredMedications: []
+	administeredMedications: [],
+	choking: {
+		conscious: '',
+		cprStarted: false,
+		cprStartTime: '',
+		cprStopped: false,
+		cprStopTime: '',
+		roscAchieved: false,
+		roscTime: ''
+	}
 });
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
@@ -89,6 +98,16 @@ export const deleteAdministeredMedication = (index) => {
 		return $patient;
 	});
 };
+
+export function updateChoking(data) {
+	patient.update((p) => ({
+		...p,
+		choking: {
+			...p.choking,
+			...data
+		}
+	}));
+}
 
 function calculateAge(dob) {
 	const birthDate = new Date(dob);
