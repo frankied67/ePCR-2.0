@@ -4,9 +4,9 @@
 	import Sepsis from '$lib/ui/Sepsis.svelte';
 	import Choking from '$lib/ui/Choking.svelte';
 	import ChokingSevere from '$lib/ui/ChokingSevere.svelte';
+	import Breathing from '$lib/ui/Breathing.svelte';
 
 	import { patient } from '$lib/stores/patientStore';
-
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -22,6 +22,12 @@
 		<div class="mt-4">
 			<ABC />
 		</div>
+
+		{#if $patient.airway === 'yes' && $patient.breathing === 'yes' && $patient.circulation === 'yes'}
+			<div class="mt-4">
+				<Breathing />
+			</div>
+		{/if}
 
 		{#if $patient.airway === 'no'}
 			<div class="mt-4">

@@ -36,7 +36,13 @@ export const patient = writable({
 		cprStopTime: '',
 		roscAchieved: false,
 		roscTime: ''
-	}
+	},
+	breathSounds: {
+		clear: false,
+		wheeze: false,
+		crackles: false
+	},
+	notes: ''
 });
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
@@ -106,6 +112,23 @@ export function updateChoking(data) {
 			...p.choking,
 			...data
 		}
+	}));
+}
+
+export function updateBreathSounds(breathSounds) {
+	patient.update((p) => ({
+		...p,
+		breathSounds: {
+			...p.breathSounds,
+			...breathSounds
+		}
+	}));
+}
+
+export function updatePatientNotes(notes) {
+	patient.update((p) => ({
+		...p,
+		notes
 	}));
 }
 
