@@ -1,6 +1,8 @@
 import { writable } from 'svelte/store';
+import { nanoid } from 'nanoid';
 
 export const patient = writable({
+	id: nanoid(),
 	firstName: '',
 	surname: '',
 	dob: '',
@@ -44,6 +46,18 @@ export const patient = writable({
 	},
 	notes: ''
 });
+
+export const patients = writable([]);
+
+export const addPatient = () => {
+	patient.update(($patient) => {
+		patients.update((currentPatients) => {
+			return [...currentPatients, $patient];
+		});
+		resetPatient();
+		return $patient;
+	});
+};
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
 	patient.update((p) => ({
@@ -130,6 +144,54 @@ export function updatePatientNotes(notes) {
 		...p,
 		notes
 	}));
+}
+
+export function resetPatient() {
+	patient.set({
+		id: nanoid(),
+		firstName: '',
+		surname: '',
+		dob: '',
+		age: '',
+		airway: '',
+		breathing: '',
+		circulation: '',
+		address: {
+			line1: '',
+			line2: '',
+			line3: '',
+			county: '',
+			postcode: ''
+		},
+		nok: {
+			firstname: '',
+			surname: '',
+			phone: ''
+		},
+		vitals: [],
+		sample: {
+			symptoms: '',
+			allergies: [],
+			medications: [],
+			lastOralIntake: ''
+		},
+		administeredMedications: [],
+		choking: {
+			conscious: '',
+			cprStarted: false,
+			cprStartTime: '',
+			cprStopped: false,
+			cprStopTime: '',
+			roscAchieved: false,
+			roscTime: ''
+		},
+		breathSounds: {
+			clear: false,
+			wheeze: false,
+			crackles: false
+		},
+		notes: ''
+	});
 }
 
 function calculateAge(dob) {

@@ -1,10 +1,20 @@
 <script>
-	import { patient } from '$lib/stores/patientStore';
+	import { patient, addPatient } from '$lib/stores/patientStore';
+
 	$: data = $patient;
+
+	const handleSubmitAndReset = () => {
+		addPatient();
+		console.log('Patient Data Submitted', data);
+	};
 </script>
 
 <div class="container my-5">
 	<h1 class="text-center mb-5">Patient Summary Report</h1>
+	<p class="text-center text-muted mb-4">
+		<strong>Date Generated:</strong>
+		{new Date().toLocaleString()}
+	</p>
 	<div class="card mb-4">
 		<div class="card-body">
 			<h5 class="card-title">Personal Details</h5>
@@ -48,8 +58,6 @@
 			</ul>
 		</div>
 	</div>
-
-	<!-- Vitals -->
 	<div class="card mb-4">
 		<div class="card-body">
 			<h5 class="card-title">Vitals</h5>
@@ -93,7 +101,7 @@
 			<h5 class="card-title">Administered Medications</h5>
 			<ul>
 				{#each data.administeredMedications as med}
-					<li>{med.name} – {med.dose}</li>
+					<li>{med.name} - {med.dose}</li>
 				{/each}
 			</ul>
 		</div>
@@ -127,6 +135,9 @@
 	</div>
 	<div class="text-center mt-5 d-print-none">
 		<button class="btn btn-primary" on:click={() => window.print()}> Print / Save as PDF </button>
+	</div>
+	<div class="text-center mt-4">
+		<button class="btn btn-success" on:click={handleSubmitAndReset}>Submit and Reset</button>
 	</div>
 </div>
 
