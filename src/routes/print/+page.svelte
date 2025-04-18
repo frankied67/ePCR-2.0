@@ -139,15 +139,15 @@
 	<div class="text-center mt-4">
 		<button class="btn btn-success" on:click={handleSubmitAndReset}>Submit and Reset</button>
 	</div>
+	<div class="text-center mt-3 d-print-none">
+		<a href="/complaint" class="btn btn-secondary">Back to App</a>
+	</div>
 </div>
 
 <style>
 	@media print {
 		.d-print-none {
 			display: none !important;
-		}
-		body {
-			background-color: white;
 		}
 	}
 </style>
