@@ -9,7 +9,7 @@
 </script>
 
 <div class="card mb-4 shadow-sm border-light">
-	<div class="card-header bg-warning text-white text-center fs-4 fw-bold">Notes</div>
+	<div class="card-header bg-info text-white text-center fs-4 fw-bold">Notes</div>
 	<div class="card-body bg-light">
 		<textarea
 			bind:value={notes}

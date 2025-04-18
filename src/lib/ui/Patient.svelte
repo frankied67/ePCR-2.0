@@ -31,6 +31,7 @@
 			<a href="/medication" class="nav-link text-dark px-2">Medication</a>
 			<a href="/vitals" class="nav-link text-dark px-2">Vitals</a>
 			<a href="/demographic" class="nav-link text-dark px-2">Demographic</a>
+			<a href="/print" class="btn btn-secondary">Print Summary</a>
 		</div>
 		{#if $loggedInUser}
 			<a href="#" class="nav-link text-dark px-2" on:click={handleLogout}>Logout</a>
