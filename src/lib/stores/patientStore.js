@@ -1,5 +1,8 @@
 import { writable } from 'svelte/store';
 import { nanoid } from 'nanoid';
+import { dummyPatients } from './dummyData';
+
+export const patients = writable([...dummyPatients]);
 
 export const patient = writable({
 	id: nanoid(),
@@ -47,7 +50,7 @@ export const patient = writable({
 	notes: ''
 });
 
-export const patients = writable([]);
+//export const patients = writable([]);
 
 export const addPatient = () => {
 	patient.update(($patient) => {

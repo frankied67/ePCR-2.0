@@ -1,8 +1,8 @@
 <script>
 	import { loggedInUser } from '$lib/stores/userStore';
 	import { goto } from '$app/navigation';
-	import UserCard from '$lib/ui/UserCard.svelte';
 	import { onMount } from 'svelte';
+	import ListPatients from '$lib/ui/ListPatients.svelte';
 
 	$: {
 		if (!$loggedInUser) {
@@ -22,9 +22,11 @@
 
 <div class="container my-4">
 	<div class="content">
-		<h2>Admin Panel</h2>
-		<a href="/admin/second" class="btn btn-secondary mb-3">Go to Patient List</a>
-		<UserCard />
+		<h2>Admin page 2</h2>
+
+		<a href="/admin" class="btn btn-primary me-2">Back to Admin Panel</a>
+
+		<ListPatients />
 	</div>
 </div>
 
