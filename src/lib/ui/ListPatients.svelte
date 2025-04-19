@@ -1,5 +1,5 @@
 <script>
-	import { patients } from '../stores/patientStore.js';
+	import { patients, deletePatient } from '../stores/patientStore.js';
 	import { onDestroy } from 'svelte';
 
 	let search = '';
@@ -36,9 +36,14 @@
 	{#if filtered.length > 0}
 		<ul class="list-group">
 			{#each filtered as patient}
-				<li class="list-group-item">
-					<strong>{patient.firstName} {patient.surname}</strong><br />
-					DOB: {patient.dob} — Age: {patient.age}
+				<li class="list-group-item d-flex justify-content-between align-items-center">
+					<div>
+						<strong>{patient.firstName} {patient.surname}</strong><br />
+						DOB: {patient.dob} — Age: {patient.age}
+					</div>
+					<button class="btn btn-danger btn-sm" on:click={() => deletePatient(patient.id)}>
+						Delete
+					</button>
 				</li>
 			{/each}
 		</ul>

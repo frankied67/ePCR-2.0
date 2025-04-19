@@ -50,16 +50,18 @@ export const patient = writable({
 	notes: ''
 });
 
-//export const patients = writable([]);
-
 export const addPatient = () => {
+	let savedPatient;
 	patient.update(($patient) => {
-		patients.update((currentPatients) => {
-			return [...currentPatients, $patient];
-		});
-		resetPatient();
+		savedPatient = $patient;
 		return $patient;
 	});
+
+	patients.update((currentPatients) => {
+		return [...currentPatients, savedPatient];
+	});
+
+	resetPatient();
 };
 
 export function updatePatientNameAndDob(firstName, surname, dob) {
@@ -147,6 +149,10 @@ export function updatePatientNotes(notes) {
 		...p,
 		notes
 	}));
+}
+
+export function deletePatient(id) {
+	patients.update((current) => current.filter((p) => p.id !== id));
 }
 
 export function resetPatient() {
