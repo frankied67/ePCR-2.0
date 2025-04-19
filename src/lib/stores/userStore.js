@@ -1,10 +1,10 @@
 import { writable, get } from 'svelte/store';
 
 export const users = writable([
-	{ username: 'Homer Simpson', password: 'homerpassword', role: 'admin' },
-	{ username: 'Marge Simpson', password: 'margepassword', role: 'user' },
-	{ username: 'Bart Simpson', password: 'bartpassword', role: 'user' },
-	{ username: 'Lisa Simpson', password: 'lisapassword', role: 'user' }
+	{ username: 'Admin Medic', password: 'adminpassword', role: 'admin' },
+	{ username: 'Medic 11', password: 'medic11password', role: 'user' },
+	{ username: 'Medic 12', password: 'medic12password', role: 'user' },
+	{ username: 'Medic 20', password: 'medic20password', role: 'user' }
 ]);
 
 export const loggedInUser = writable(null);
