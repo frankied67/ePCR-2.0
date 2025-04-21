@@ -15,18 +15,6 @@
 	<Sepsis />
 
 	<div class="mt-4">
-		<div class="content">
-			<Vitals on:vitalsUpdated={addVitals} />
-		</div>
+		<Vitals on:vitalsUpdated={addVitals} />
 	</div>
 </div>
-
-<style>
-	.content {
-		overflow-y: auto;
-		max-width: 960px;
-		margin: 0 auto;
-		box-sizing: border-box;
-		padding: 20px;
-	}
-</style>
